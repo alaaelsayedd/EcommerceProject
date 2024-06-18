@@ -68,7 +68,7 @@ function Login() {
         if (path != "/login") {
           navigate(path);
         } else {
-          navigate("/");
+          navigate("/EcommerceProject");
         }
 
         setMessage("");

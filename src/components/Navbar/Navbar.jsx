@@ -12,7 +12,7 @@ import { authContext } from "../../Context/AuthContext";
 import { ContContext } from "../../Context/CountCartItem";
 
 const navigation = [
-  { name: "Home", href: "/", current: false },
+  { name: "Home", href: "/EcommerceProject", current: false },
   { name: `Carts`, href: "cart", current: false },
   { name: "Wishlist", href: "wishlist", current: false },
   { name: "Categories", href: "categories", current: false },
