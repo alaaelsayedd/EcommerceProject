@@ -5,29 +5,37 @@ import Product from "../Product/Product";
 import Loading from "../Loading/Loading";
 import Slide from "../Slider/Slider";
 import { useQuery } from "react-query";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllCtaegories } from "../../Redux/CategoriesSlice";
 
 function Products() {
   const [products, setProducts] = useState(null);
   const [isloading, setIsloading] = useState(false);
-  const [categories, setCategories] = useState(null);
+  // const [categories, setCategories] = useState(null);
   let { data, isLoading } = useQuery("products", getAllProducts);
+  let dispatch = useDispatch();
+  let {categories} =useSelector(store=>store.categories)
+  // console.log(categories);
   // console.log(isFetching);
 
   function getAllProducts() {
     return axios.get("https://ecommerce.routemisr.com/api/v1/products");
   }
-  async function getAllCategories() {
-    setIsloading(true);
-    const { data } = await axios.get(
-      "https://ecommerce.routemisr.com/api/v1/categories"
-    );
-    setCategories(data.data);
-    setIsloading(false);
-  }
+
+  // async function getAllCategories() {
+  //   setIsloading(true);
+  //   const { data } = await axios.get(
+  //     "https://ecommerce.routemisr.com/api/v1/categories"
+  //   );
+  //   setCategories(data.data);
+  //   setIsloading(false);
+  // }
 
   useEffect(() => {
     getAllProducts();
-    getAllCategories();
+    dispatch(getAllCtaegories());
+    
+    // getAllCategories();
   }, []);
 
   return (
@@ -43,7 +51,7 @@ function Products() {
             })}
           </div>
         </>
-      )}
+     )} 
     </>
   );
 }

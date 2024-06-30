@@ -35,7 +35,7 @@ function ForgetPassword() {
         formik.values
       )
       .then((data) => {
-       navigate('/verfiy-code');
+       navigate('/EcommerceProject/verfiy-code');
        setIsLoading(false);
   }).catch((error)=>{
     setErrorMessage("Wrong Email Not Exist Please Register ")

@@ -50,7 +50,7 @@ function Register() {
       .then((data)=>{
         // console.log(data);
         setIsLoading(false);
-        navigate('/login');
+        navigate('/EcommerceProject/login');
         setMessage("");
       }).catch(   (error)=> {
         // console.log(  error.response.data.message);

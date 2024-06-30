@@ -65,7 +65,7 @@ function Login() {
         setLogin(true);
         setIsLoading(false);
         localStorage.setItem("token", data.data.token);
-        if (path != "/login") {
+        if (path != "/EcommerceProject/login") {
           navigate(path);
         } else {
           navigate("/EcommerceProject");
@@ -132,7 +132,7 @@ function Login() {
             {errorMessage}
           </p>
         )}
-          <Link className="my-2  text-red-600" to={'/forgetpassword'}>Forget Password ? </Link>
+          <Link className="my-2  text-red-600" to={'/EcommerceProject/forgetpassword'}>Forget Password ? </Link>
 
         <div className="mb-6 ">
           <button

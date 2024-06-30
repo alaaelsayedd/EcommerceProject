@@ -45,7 +45,7 @@ const { setLogin } = useContext(authContext);
         formik.values
       )
       .then((data) => {
-       navigate('/');
+       navigate('/EcommerceProject');
        localStorage.setItem("token",data.data.token)
        setLogin(true);
        setIsLoading(false);

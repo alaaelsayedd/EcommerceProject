@@ -25,6 +25,8 @@ import UpdatePassword from "./components/ForgetPassword/UpdatePassword";
 import Checkout from "./components/Checkout/Checkout";
 import { QueryClient, QueryClientProvider } from "react-query";
 import AllOrders from "./components/AllOrders/AllOrder";
+import { Provider } from 'react-redux'
+import { Store } from "./Redux/Store";
 const queryClient = new QueryClient()
 
 function App() {
@@ -149,6 +151,7 @@ function App() {
   return (
 
     <>
+    <Provider store={Store}>
      <QueryClientProvider client={queryClient}>
       <AuthContextProvider>
         <CartCountProvider>
@@ -157,6 +160,7 @@ function App() {
         </CartCountProvider>
       </AuthContextProvider>
       </QueryClientProvider>
+      </Provider>
     </>
   );
 }

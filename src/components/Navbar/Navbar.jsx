@@ -29,7 +29,7 @@ export default function Navbar() {
   const { count } = useContext(ContContext);
   function signOut() {
     window.localStorage.removeItem("token");
-    navigate("/login");
+    navigate("/EcommerceProject/login");
     setLogin(false);
   }
 
@@ -83,7 +83,7 @@ export default function Navbar() {
                       type="button"
                       className="relative rounded-full p-1 ps-2 text-green-500 text-xl"
                       onClick={() => {
-                        navigate("/cart");
+                        navigate("/EcommerceProject/cart");
                       }}
                     >
                       <i class="fa-solid fa-cart-shopping"></i>

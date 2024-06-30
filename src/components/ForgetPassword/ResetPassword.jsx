@@ -33,7 +33,7 @@ function RestPassword() {
         formik.values
       )
       .then((data) => {
-        navigate('/resetPassword')
+        navigate('/EcommerceProject/resetPassword')
         setIsLoading(false)
         // console.log(data.data.message)
 
