@@ -18,6 +18,10 @@ const navigation = [
   { name: "Categories", href: "categories", current: false },
   { name: "Brands", href: "brands", current: false },
 ];
+const authNavigation = [
+  { name: "Login", href: "/EcommerceProject/login", current: false },
+  { name: `Register`, href: "/EcommerceProject/register", current: false },
+];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -76,7 +80,7 @@ export default function Navbar() {
                 </div>
               </div>
 
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:ml-6 md:pr-0">
+              <div className="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:ml-6 md:pr-0 ">
                 {islogin ? (
                   <>
                     <button
@@ -92,7 +96,7 @@ export default function Navbar() {
 
                     <button
                       type="button"
-                      className="relative rounded-full p-1 ps-2  font-bold text-gray-600 "
+                      className="relative rounded-full p-1 ps-2  font-bold text-gray-600  md:block hidden"
                       onClick={signOut}
                     >
                       Sign out
@@ -100,24 +104,26 @@ export default function Navbar() {
                   </>
                 ) : (
                   <>
-                    <button
-                      type="button"
-                      className="relative rounded-full p-1 ps-2  font-bold text-gray-600 "
-                      onClick={() => {
-                        navigate("login");
-                      }}
-                    >
-                      Login
-                    </button>
-                    <button
-                      type="button"
-                      className="relative rounded-full p-1 ps-2  font-bold text-gray-600"
-                      onClick={() => {
-                        navigate("register");
-                      }}
-                    >
-                      Sign Up
-                    </button>
+                    <div className=" md:block hidden">
+                      <button
+                        type="button"
+                        className="relative rounded-full p-1 ps-2  font-bold text-gray-600 "
+                        onClick={() => {
+                          navigate("login");
+                        }}
+                      >
+                        Login
+                      </button>
+                      <button
+                        type="button"
+                        className="relative rounded-full p-1 ps-2  font-bold text-gray-600"
+                        onClick={() => {
+                          navigate("register");
+                        }}
+                      >
+                        Sign Up
+                      </button>
+                    </div>
                   </>
                 )}
               </div>
@@ -126,20 +132,47 @@ export default function Navbar() {
 
           <DisclosurePanel className="md:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2">
-              {navigation.map((item) => (
-                <DisclosureButton
-                  key={item.name}
-                  as={NavLink}
-                  to={item.href}
-                  className={classNames(
-                    item.current ? " text-gray-600 font-bold" : "text-gray-400",
-                    "block rounded-md px-3 py-2 text-base font-medium"
-                  )}
-                  aria-current={item.current ? "page" : undefined}
-                >
-                  {item.name}
+              {islogin
+                ? navigation.map((item) => (
+                    <DisclosureButton
+                      key={item.name}
+                      as={NavLink}
+                      to={item.href}
+                      className={classNames(
+                        item.current
+                          ? " text-gray-600 font-bold"
+                          : "text-gray-400",
+                        "block rounded-md px-3 py-2 text-base font-medium"
+                      )}
+                      aria-current={item.current ? "page" : undefined}
+                    >
+                      {item.name}
+                    </DisclosureButton>
+                  ))
+                : authNavigation.map((item) => (
+                    <DisclosureButton
+                      key={item.name}
+                      as={NavLink}
+                      to={item.href}
+                      className={classNames(
+                        " text-gray-400  block rounded-md px-3 py-2 text-base font-medium"
+                      )}
+                      aria-current={item.current ? "page" : undefined}
+                    >
+                      {item.name}
+                    </DisclosureButton>
+                  ))}
+              {islogin && (
+                <DisclosureButton>
+                  <button
+                    type="button"
+                    className="relative rounded-full p-1 ps-2  font-bold text-gray-400  hover:text-gray-600"
+                    onClick={signOut}
+                  >
+                    Sign out
+                  </button>
                 </DisclosureButton>
-              ))}
+              )}
             </div>
           </DisclosurePanel>
         </>
